@@ -26,8 +26,9 @@ class PCDPublisher(Node):
         # mmpp = 0.1778  # for 160x120 img size from R1
         # mmpp = 0.0446  # for 640x480 img size R1
         # mmpp = 0.029 # for 1032x772 img size from R1
-        mmpp = 0.081  # r2d2 gel 18x24mm at 240x320
-        self.mpp = mmpp / 1000.
+        mmpp = 0.075  # r2d2 gel 18x24mm at 240x320
+        self.mpp = mmpp/1000.
+        self.mpp = 0.01  # TODO: the size of pcd
 
         finger = gsdevice.Finger.MINI
         cam_id = gsdevice.get_camera_id(self.get_parameter('device_name').value)
@@ -36,7 +37,7 @@ class PCDPublisher(Node):
 
         ''' Load neural network '''
         script_file_path = os.path.dirname(__file__)
-        net_file_path = 'nnmini.pt'  # TODO: move the .pt to install
+        net_file_path = 'nnmini.pt'
         net_path = os.path.join(script_file_path, net_file_path)
         print('net path = ', net_path)
 
