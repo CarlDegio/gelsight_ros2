@@ -19,7 +19,7 @@ class PCDPublisher(Node):
         self.declare_parameter('image_frequency', 5.0)
 
         # Set flags
-        GPU = False
+        GPU = True
 
         # Set the camera resolution
         # mmpp = 0.0887  # for 240x320 img size
@@ -30,9 +30,7 @@ class PCDPublisher(Node):
         self.mpp = mmpp/1000.
         self.mpp = 0.01  # TODO: the size of pcd
 
-        finger = gsdevice.Finger.MINI
-        cam_id = gsdevice.get_camera_id(self.get_parameter('device_name').value)
-        self.dev = gsdevice.Camera(finger, cam_id)
+        self.dev = gsdevice.Camera(self.get_parameter('device_name').value)
         self.dev.connect()
 
         ''' Load neural network '''
@@ -45,7 +43,7 @@ class PCDPublisher(Node):
             gpuorcpu = "cuda"
         else:
             gpuorcpu = "cpu"
-        self.nn = gs3drecon.Reconstruction3D(gs3drecon.Finger.R15, self.dev)
+        self.nn = gs3drecon.Reconstruction3D(self.dev)
         net = self.nn.load_nn(net_path, gpuorcpu)
         if net is None:
             print('Failed to load neural network')

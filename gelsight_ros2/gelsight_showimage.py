@@ -16,9 +16,7 @@ class CameraPublisher(Node):
         self.declare_parameter('device_name', 'GelSight Mini')
         self.declare_parameter('image_frequency', 20.0)
 
-        finger = gsdevice.Finger.MINI
-        cam_id = gsdevice.get_camera_id(self.get_parameter('device_name').value)
-        self.dev = gsdevice.Camera(finger, cam_id)
+        self.dev = gsdevice.Camera(self.get_parameter('device_name').value)
         self.dev.connect()
         figure0 = self.dev.get_raw_image()
         print('image size = ', figure0.shape[1], figure0.shape[0])
