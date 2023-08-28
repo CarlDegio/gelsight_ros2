@@ -14,7 +14,7 @@ import std_msgs.msg
 class PCDPublisher(Node):
 
     def __init__(self):
-        super().__init__('pcd_publisher_node')
+        super().__init__('gelsight_showpcd')
         self.declare_parameter('device_name', 'GelSight Mini')
         self.declare_parameter('image_frequency', 5.0)
 
