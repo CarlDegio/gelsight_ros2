@@ -22,13 +22,9 @@ class PCDPublisher(Node):
         GPU = True
 
         # Set the camera resolution
-        # mmpp = 0.0887  # for 240x320 img size
-        # mmpp = 0.1778  # for 160x120 img size from R1
-        # mmpp = 0.0446  # for 640x480 img size R1
-        # mmpp = 0.029 # for 1032x772 img size from R1
-        mmpp = 0.075  # r2d2 gel 18x24mm at 240x320
+        mmpp = 0.0634  
         self.mpp = mmpp/1000.
-        self.mpp = 0.01  # TODO: the size of pcd
+        # self.mpp = 0.01  # TODO: the size of pcd
 
         self.dev = gsdevice.Camera(self.get_parameter('device_name').value)
         self.dev.connect()

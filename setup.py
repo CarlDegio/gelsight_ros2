@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'gelsight_showimage = gelsight_ros2.gelsight_showimage:main',
-            'gelsight_show3d = gelsight_ros2.gelsight_show3d:main'
+            'gelsight_show3d = gelsight_ros2.gelsight_show3d:main',
+            'gelsight_showdepth = gelsight_ros2.gelsight_showdepth:main'
         ],
     },
 )
